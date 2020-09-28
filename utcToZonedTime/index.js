@@ -38,12 +38,12 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  * //=> Jun 25 2014 06:00:00
  */
 function utcToZonedTime(dirtyDate, timeZone, options) {
-  var date = (0, _toDate.default)(dirtyDate, options); // This date has the UTC time values of the input date at the system time zone
-
-  var utcDate = new Date(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate(), date.getUTCHours(), date.getUTCMinutes(), date.getUTCSeconds(), date.getUTCMilliseconds()); // We just need to apply the offset indicated by the time zone to this localized date
+  var date = (0, _toDate.default)(dirtyDate, options); // We just need to apply the offset indicated by the time zone to this localized date
 
   var offsetMilliseconds = (0, _tzParseTimezone.default)(timeZone, date);
-  return offsetMilliseconds ? (0, _subMilliseconds.default)(utcDate, offsetMilliseconds) : utcDate;
+  var zonedDate = offsetMilliseconds ? (0, _subMilliseconds.default)(date, offsetMilliseconds) : date; // This date has the UTC time values of the zoned date at the system time zone
+
+  return new Date(zonedDate.getUTCFullYear(), zonedDate.getUTCMonth(), zonedDate.getUTCDate(), zonedDate.getUTCHours(), zonedDate.getUTCMinutes(), zonedDate.getUTCSeconds(), zonedDate.getUTCMilliseconds());
 }
 
 module.exports = exports.default;
