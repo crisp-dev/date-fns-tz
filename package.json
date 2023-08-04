@@ -13,7 +13,7 @@
   "module": "esm/index.js",
   "types": "typings.d.ts",
   "scripts": {
-    "build": "./scripts/build/build.sh",
+    "_build": "./scripts/build/build.sh",
     "package": "./scripts/build/package.sh",
     "clean": "rm -rf tmp/package && rm tmp/docs.json",
     "test": "karma start config/karma.js",
